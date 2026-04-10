@@ -1,0 +1,16 @@
+{
+  "name": "roxiler-store-rating-platform",
+  "version": "1.0.0",
+  "description": "Full-stack MERN store rating platform for Roxiler Systems assignment",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm start --prefix frontend",
+    "dev": "npm run dev:backend & npm run dev:frontend",
+    "seed": "node backend/seed.js",
+    "build:frontend": "npm run build --prefix frontend"
+  },
+  "keywords": ["mern", "react", "express", "mongodb", "jwt"],
+  "author": "",
+  "license": "ISC"
+}
