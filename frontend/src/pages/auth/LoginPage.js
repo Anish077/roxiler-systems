@@ -20,25 +20,29 @@ export default function LoginPage() {
     return errs;
   };
 
-  const submit = async (e) => {
+  const submit = (e) => {
     e.preventDefault();
+    e.stopPropagation();
+
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
 
     setLoading(true);
-    try {
-      const res = await authAPI.login(form);
-      const { user, token } = res.data.data;
-      login(user, token);
-      toast.success(`Welcome back, ${user.name.split(' ')[0]}!`);
-      if (user.role === 'admin') navigate('/admin/dashboard');
-      else if (user.role === 'owner') navigate('/owner/dashboard');
-      else navigate('/user/stores');
-    } catch (err) {
-      toast.error(err.response?.data?.message || 'Login failed');
-    } finally {
-      setLoading(false);
-    }
+    authAPI.login(form)
+      .then((res) => {
+        const { user, token } = res.data.data;
+        login(user, token);
+        toast.success(`Welcome back, ${user.name.split(' ')[0]}!`);
+        if (user.role === 'admin') navigate('/admin/dashboard');
+        else if (user.role === 'owner') navigate('/owner/dashboard');
+        else navigate('/user/stores');
+      })
+      .catch((err) => {
+        toast.error(err.response?.data?.message || 'Login failed');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -52,12 +56,13 @@ export default function LoginPage() {
         <h2 className="auth-subtitle">Welcome back</h2>
         <p className="auth-desc">Sign in to your account to continue</p>
 
-        <form onSubmit={submit} noValidate autoComplete="off">
+        <form onSubmit={submit} noValidate autoComplete="new-password">
           <div className="form-group">
             <label className="form-label">Email <span>*</span></label>
             <input
               className={`input ${errors.email ? 'error' : ''}`}
-              type="email" name="email"
+              type="text" name="email"
+              autoComplete="off"
               placeholder="you@example.com"
               value={form.email} onChange={handle}
             />
@@ -71,11 +76,12 @@ export default function LoginPage() {
               type="password" name="password"
               placeholder="Enter your password"
               value={form.password} onChange={handle}
+              autoComplete="off"
             />
             {errors.password && <p className="form-error">⚠ {errors.password}</p>}
           </div>
 
-          <button className="btn btn-primary btn-full btn-lg" type="submit" disabled={loading}>
+          <button className="btn btn-primary btn-full btn-lg" type="button" onClick={submit} disabled={loading}>
             {loading ? <><span className="spinner" /> Signing in...</> : 'Sign In'}
           </button>
         </form>
