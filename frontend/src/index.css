@@ -35,6 +35,20 @@
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+[data-theme="light"] {
+  --bg: #f5f5fa;
+  --bg-2: #ffffff;
+  --bg-3: #ebebf5;
+  --bg-4: #e0e0ee;
+  --border: #d0d0e0;
+  --border-light: #b8b8d0;
+  --text: #0a0a1a;
+  --text-2: #4a4a6a;
+  --text-3: #8888aa;
+  --shadow: 0 4px 24px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 48px rgba(0,0,0,0.15);
+}
+
 html { scroll-behavior: smooth; }
 
 body {
