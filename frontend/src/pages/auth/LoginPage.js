@@ -52,7 +52,7 @@ export default function LoginPage() {
         <h2 className="auth-subtitle">Welcome back</h2>
         <p className="auth-desc">Sign in to your account to continue</p>
 
-        <form onSubmit={submit} noValidate>
+        <form onSubmit={submit} noValidate autoComplete="off">
           <div className="form-group">
             <label className="form-label">Email <span>*</span></label>
             <input

@@ -20,7 +20,20 @@ export default function OwnerDashboard() {
   );
 
   if (!data) return (
-    <div className="loading-center"><p style={{ color: 'var(--danger)' }}>Could not load store data.</p></div>
+    <>
+      <div className="page-header">
+        <h2>Store Dashboard</h2>
+        <p>My Store Dashboard</p>
+      </div>
+      <div className="page-body">
+        <div className="empty-state" style={{ padding: '80px 20px' }}>
+          <p style={{ color: 'var(--text-2)', marginBottom: 8 }}>No store assigned yet</p>
+          <p style={{ color: 'var(--text-3)', fontSize: '0.85rem' }}>
+            Please contact the administrator to assign a store to your account.
+          </p>
+        </div>
+      </div>
+    </>
   );
 
   const columns = [
