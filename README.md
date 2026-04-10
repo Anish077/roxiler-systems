@@ -171,12 +171,7 @@ npm start
 ```
 Email:    admin@roxiler.com
 Password: Admin@1234
-
-Email: owner@roxiler.com
-Password: Owner@1234
-
-Email: user@roxiler.com
-Password: User@1234
+```
 
 ## Deployment
 
