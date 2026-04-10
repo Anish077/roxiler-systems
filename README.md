@@ -172,6 +172,7 @@ npm start
 Email:    admin@roxiler.com
 Password: Admin@1234
 ```
+<<<<<<< HEAD
 Email:    owner@roxiler.com
 Password: Owner@1234
 ```
@@ -179,6 +180,8 @@ Email:    user@roxiler.com
 Password: User@1234
 ```
 ---
+=======
+>>>>>>> e635cec9c98f287a15cb0e307a92c36c555ffd54
 
 ## Deployment
 
